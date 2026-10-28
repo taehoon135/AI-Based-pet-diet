@@ -14,7 +14,11 @@ class ApiException implements Exception {
 }
 
 class ApiClient {
-  static const _serverUrl = 'http://35.78.87.150:8080';
+  // 로컬 백엔드 (iOS 시뮬레이터/웹/데스크톱). Android 에뮬레이터는 'http://10.0.2.2:8080' 사용
+  static const _serverUrl = 'http://localhost:8080';
+  // [EC2 배포용 - 현재 비활성화] EC2 재사용 시 위 줄 대신 사용. IP가 바뀌었으면 교체
+  // (pet_raising_3d_page.dart에도 같은 주소가 하드코딩되어 있으니 함께 변경)
+  // static const _serverUrl = 'http://35.78.87.150:8080';
 
   static String get _baseUrl {
     return _serverUrl;

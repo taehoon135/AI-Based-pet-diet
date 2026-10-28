@@ -38,7 +38,9 @@ class _PetRaising3DPageState extends State<PetRaising3DPage> {
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString('access_token');
 
-      final url = 'http://35.78.87.150:8080/api/pets/${widget.petId}';
+      final url = 'http://localhost:8080/api/pets/${widget.petId}';
+      // [EC2 배포용 - 현재 비활성화] EC2 재사용 시 위 줄 대신 사용 (api_client.dart와 같은 주소로)
+      // final url = 'http://35.78.87.150:8080/api/pets/${widget.petId}';
       final response = await http.get(
         Uri.parse(url),
         headers: {'Authorization': 'Bearer $token'},
